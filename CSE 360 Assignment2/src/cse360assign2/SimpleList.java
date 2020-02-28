@@ -2,8 +2,9 @@
  * Name: Woojun Seo
  * ID: 249
  * Description: This program contains a SimpleList class that involves arrays and its manipulation
- * It contains methods that add, remove, search, and toString elements in an array. It also keeps 
- * track of the number of elements in the array as well.
+ * It contains methods that add, remove, search, toString elements in an array. It also keeps 
+ * track of the number of elements in the array as well. Additionally, it has methods that return the 
+ * first and last elements in the array, as well as the number of empty slots in the array.
  */
 
 package cse360assign2;
