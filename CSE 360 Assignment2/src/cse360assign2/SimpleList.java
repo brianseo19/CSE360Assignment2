@@ -25,7 +25,7 @@ public class SimpleList
 	 */
 	public SimpleList()
 	{
-		list = new int[4];
+		list = new int[7];
 		count = 0;	
 	}
 	
@@ -82,6 +82,16 @@ public class SimpleList
 				break;
 			}
 		}
+		if (count < (list.length*3/4) && list.length > 0)
+		{
+			System.out.println("i");
+			int[] newList = new int[list.length-1];
+			for (int index = 0; index < count; index++)
+			{
+				newList[index] = list[index];
+			}
+			list = newList;
+		}
 	}
 	
 	/**
@@ -90,7 +100,6 @@ public class SimpleList
 	public int count()
 	{
 		//remove print line
-		System.out.println(count);
 		return count;
 	}
 	
@@ -138,10 +147,10 @@ public class SimpleList
 		SimpleList test = new SimpleList();
 		test.add(1);
 		test.add(2);
-		test.add(3);
-		test.add(4);
-		test.add(7);
-		test.count();
+		test.remove(2);
+		test.remove(1);
 		test.toString();
+		System.out.println(test.list.length);
+	
 	}
 }
