@@ -12,6 +12,7 @@ import java.io.*;
  * This SimpleList class contains very simple methods that 
  * manipulate elements within an array
  */
+
 public class SimpleList 
 {
 	private int[] list;
@@ -24,14 +25,15 @@ public class SimpleList
 	 */
 	public SimpleList()
 	{
-		list = new int[10];
+		list = new int[4];
 		count = 0;	
 	}
 	
 	/**
 	 * This method adds an element to the array using an integer 
 	 * @param x. It shifts all the other elements in the array over
-	 * to make room for the new element. The count is then incremented
+	 * to make room for the new element. If the list is full, it increases
+	 * the size of the array by 50%. The count is then incremented
 	 */
 	public void add(int input)
 	{
@@ -42,6 +44,15 @@ public class SimpleList
 		}
 		else 
 		{
+			if (count == list.length)
+			{
+				int[] newList = new int[list.length * 3/2];
+				for (int index = 0; index < count; index++)
+				{
+					newList[index] = list[index];
+				}
+				list = newList;
+			}
 			for(int start = count; start > 0; start--)
 			{
 				list[start] = list[start-1];
@@ -53,7 +64,8 @@ public class SimpleList
 	
 	/**
 	 * This method removes an element from the array given by the 
-	 * @param x. It finds the specified element and removes it. 
+	 * @param x. It finds the specified element and removes it. If there
+	 * are more than 25% empty spaces, then the size of the list is decreased. 
 	 * The other values in the array are shifted to fill in the gap
 	 */
 	public void remove(int input)
@@ -77,6 +89,8 @@ public class SimpleList
 	 */
 	public int count()
 	{
+		//remove print line
+		System.out.println(count);
 		return count;
 	}
 	
@@ -94,6 +108,8 @@ public class SimpleList
 			else
 				output = output + Integer.toString(list[start]) + " ";
 		}
+		//remove print line
+		System.out.println(output);
 		return output;
 	}
 	
@@ -115,5 +131,17 @@ public class SimpleList
 			}
 		}
 		return found;
+	}
+	
+	public static void main(String[] args)
+	{
+		SimpleList test = new SimpleList();
+		test.add(1);
+		test.add(2);
+		test.add(3);
+		test.add(4);
+		test.add(7);
+		test.count();
+		test.toString();
 	}
 }
