@@ -79,10 +79,10 @@ public class SimpleList
 					list[start2] = list[start2+1];
 				}
 				count--;
-				break;
+				start = count;
 			}
 		}
-		if (count < (list.length*3/4) && list.length > 0)
+		if (count < (list.length * 3/4) && list.length > 0)
 		{
 			System.out.println("i");
 			int[] newList = new int[list.length-1];
@@ -188,7 +188,6 @@ public class SimpleList
 	/**
 	 * This method @return the number of empty spaces in the list. It finds the difference
 	 * between the length of the list and the current number of elements in it.
-	 * @return
 	 */
 	public int size()
 	{
