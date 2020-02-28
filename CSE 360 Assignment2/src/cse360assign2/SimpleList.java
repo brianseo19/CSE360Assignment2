@@ -25,7 +25,7 @@ public class SimpleList
 	 */
 	public SimpleList()
 	{
-		list = new int[7];
+		list = new int[10];
 		count = 0;	
 	}
 	
@@ -99,7 +99,6 @@ public class SimpleList
 	 */
 	public int count()
 	{
-		//remove print line
 		return count;
 	}
 	
@@ -117,13 +116,11 @@ public class SimpleList
 			else
 				output = output + Integer.toString(list[start]) + " ";
 		}
-		//remove print line
-		System.out.println(output);
 		return output;
 	}
 	
 	/**
-	 * This method takes a @param x that is the element that is being searched
+	 * This method takes a @param input that is the element that is being searched
 	 * for. It returns the index that the element is at if it is in the
 	 * array and returns a negative number if the element
 	 * does not exist.
@@ -141,15 +138,78 @@ public class SimpleList
 		}
 		return found;
 	}
+	/**
+	 * This method that a @param input and appends it to the end of the list.
+	 * If the list is already full, it expands the size of the list by 50%.
+	 * Then appends the new element. After this the count is incremented.
+	 */
+	public void append(int input)
+	{
+		if (count == list.length)
+		{
+			int[] newList = new int[list.length * 3/2];
+			for (int index = 0; index < count; index++)
+			{
+				newList[index] = list[index];
+			}
+			list = newList;
+		}
+		list[count] = input;
+		count++;
+	}
+	/**
+	 * This method @return the first element of the list. If there are no elements
+	 * in the list, it returns -1
+	 */
+	public int first()
+	{
+		int element = -1;
+		if(count == 0)
+			return element;
+		else
+			element = list[0];
+		return element;		
+	}
 	
+	/**
+	 * This method @return the last element in the list. If there are no elements
+	 * in the list, it returns -1.
+	 */
+	public int last()
+	{
+		int element = -1;
+		if(count == 0)
+			return element;
+		else 
+			element = list[count-1];
+		return element;
+	}
+	
+	/**
+	 * This method @return the number of empty spaces in the list. It finds the difference
+	 * between the length of the list and the current number of elements in it.
+	 * @return
+	 */
+	public int size()
+	{
+		return list.length-count;
+	}
 	public static void main(String[] args)
 	{
 		SimpleList test = new SimpleList();
 		test.add(1);
 		test.add(2);
-		test.remove(2);
-		test.remove(1);
-		test.toString();
+		test.add(3);
+		test.add(4);
+		test.add(5);
+		test.add(6);
+		test.add(7);
+		test.add(8);
+		test.append(4);
+		System.out.println(test.toString());
+		System.out.println(test.first());
+		System.out.println(test.last());
+		System.out.println(test.size());
 		System.out.println(test.list.length);
 	
 	}
